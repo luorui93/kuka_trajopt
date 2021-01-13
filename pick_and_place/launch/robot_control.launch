@@ -1,0 +1,19 @@
+<launch>
+    <arg name="sim_robot" default="true"/>
+    <arg name="robot_ip" default="" unless="$(arg sim_robot)"/>
+    <arg name="sim_sensor" default="false"/>
+    <arg name="single_camera" default="false" unless="$(arg sim_sensor)"/>
+
+    <arg name="rviz" default="true"/>
+    <arg name="plotting" default="false" />
+    <arg name="file_write_cb" default="false" />
+    <arg name="actuate_gripper" default="true" />
+
+    <!-- Bringup the robot -->
+    <include file="$(find pick_and_place)/launch/bringup_robot.launch" >
+        <arg name="sim_robot" value="$(arg sim_robot)"/>
+        <arg name="robot_ip" value="$(arg robot_ip)" unless="$(arg sim_robot)"/>
+        <arg name="rviz" value="$(arg rviz)"/>
+        <arg name="actuate_gripper" value="$(arg actuate_gripper)"/>
+    </include>
+</launch>

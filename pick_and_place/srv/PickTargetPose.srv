@@ -1,0 +1,5 @@
+# Request - service requests a geometry_msgs/Pose
+geometry_msgs/Pose target_pose
+---
+# Response - service returns a bool
+bool succeeded

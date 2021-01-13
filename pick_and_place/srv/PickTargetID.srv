@@ -1,0 +1,5 @@
+# Request: requests an uint32 target id
+uint32 id
+---
+# Response: returns a bool
+bool succeeded

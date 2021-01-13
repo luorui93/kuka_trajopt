@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="cloud_debug" default="true"/>
+  <param name="cloud_debug" value="$(arg cloud_debug)"/>
+
+  <node name="processing_node" pkg="pick_and_place_perception" type="perception_node" output="screen">
+    <rosparam>
+      cloud_topic1: "/camera1/camera/depth_registered/points"
+      cloud_topic2: "/camera2/camera/depth_registered/points"
+      cloud_topic3: "/camera3/camera/depth_registered/points"
+      world_frame: "world"
+      camera_frame: "camera"
+      voxel_leaf_size: 0.001 <!-- mm -->
+      y_filter_min:  0.25 <!-- m -->
+      y_filter_max:  0.70 <!-- m -->
+      x_filter_min: -0.35 <!-- m -->
+      x_filter_max:  0.35 <!-- m -->
+      <!-- Add .781  for the top of the table-->
+      z_filter_min:  .850 <!-- m -->
+      z_filter_max:  1.031 <!-- m -->
+      plane_max_iterations: 300
+      plane_distance_threshold: 0.02
+      cluster_tolerance: 0.02
+      cluster_min_size: 150
+      cluster_max_size: 600000
+    </rosparam>
+  </node>
+</launch>
